@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import Header from '../Header/Header'
 import Home from '../Home/Home'
-import {Route } from 'react-router-dom'
+import Pets from '../Pets/Pets'
+import {Route,Switch } from 'react-router-dom'
 
 
 class  App extends Component {
@@ -9,11 +10,19 @@ class  App extends Component {
   return( 
   <div className="App">
   <Header/>
-  <Route
-  path='/'
+
+  <Switch>
+  
+<Route
+path="/pets"
+component={Pets}
+/>
+
+<Route
+  exact path='/'
   component={Home}
   />
-
+</Switch>
 
 </div>)
  }
