@@ -12,7 +12,12 @@ class Home extends Component{
            <p>
                <img src={SearchPets} alt="search for your new pet"/>
            <br/><br/>
-            <button>Start Search</button>
+
+           <form>
+            
+                <input type ="text" placeholder="Enter Your Name Here"/><br/> <br/>
+            <input type="button" value="Start Search"/>
+            </form>
             </p>
 </div>
         )
