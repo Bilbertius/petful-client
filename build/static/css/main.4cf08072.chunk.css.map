@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,EACI,qBAAsB,CACtB,iBAIJ,CAEA,IACI,UAAW,CACX,oBACJ","file":"main.4cf08072.chunk.css","sourcesContent":["*{\r\n    box-sizing: border-box;\r\n    text-align: center;\r\n   \r\n\r\n\r\n}\r\n\r\n* a{\r\n    color:black;\r\n    text-decoration: none;\r\n}"]}
