@@ -62,7 +62,7 @@ export class PetProvider extends React.Component {
 		};
 		return (
 			<PetContext.Provider value={value} >
-				{this.props.children}xs
+				{this.props.children}
 			</PetContext.Provider>
 		);
 	}

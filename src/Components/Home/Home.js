@@ -1,15 +1,19 @@
 import React ,{Component } from 'react'
 import SearchPets from '../../images/searchpets.png'
-
+import Pets from '../Pets/Pets';
+import {Link, Switch, Route} from 'react-router-dom';
 
 class Home extends Component{
-startSearch= event=>{
-    event.preventDefault()
-
-
-    console.log("button is working")
-    this.props.history.push('/pets')
-}
+    state ={
+        user: ''
+    }
+    
+    setUser(e) {
+        e.preventDefault();
+        const { user } = e.target['person-name'].value;
+        
+        
+    }
 
     render(){
 
@@ -22,10 +26,10 @@ startSearch= event=>{
            <br/><br/>
            </p>
 
-           <form onSubmit={this.startSearch} className="submit-Name"> 
+           <form onSubmit={this.setUser} className="submit-Name">
            
                 <input type ="text" name="person-name" placeholder="Enter Your Name Here"/><br/> <br/>
-            <input type="submit" value="Start Search"/>
+            <Link id='start' type='submit' to='/pets'>Start</Link>
             </form>
             
 </div>
