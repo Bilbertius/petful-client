@@ -1,12 +1,12 @@
 import React from 'react';
+import PetApiService from '../Services/pet-api-service';
 
 const PetContext = React.createContext({
-	pet : {
-		dog: {},
-		cat: {},
-	},
+	
+	dog: {},
+	cat: {},
 	error: null,
-	getPets: () => {},
+
 	adoptDog: () => {},
 	adoptCat: () => {},
 	setError: () => {},
@@ -16,47 +16,25 @@ const PetContext = React.createContext({
 export default PetContext;
 
 export class PetProvider extends React.Component {
+	state = {
+		dog: {},
+		cat: {},
+		error: null
+	}
 	
 	componentDidMount() {
-		this.getPets();
-		
-	};
-	
-	getPets = () => {
-		fetch('http://localhost:8080/api/pets', {
-			method: 'GET',
-			headers: {
-				'content/type': 'application/json'
-			}
-		})
-			.then(res => !res.ok ? res.json().then(err => Promise.reject(err.statusText)) : res.json())
-			.then(pets => this.setState({ pet : {dog: pets.nextDog, cat: pets.nextCat}}))
-	};
+		PetApiService.getPets()
+			.then(pets => this.setState({dog: pets.nextDog, cat: pets.nextCat}));
+		};
 	
 	adoptDog = () => {
-		fetch(`http://localhost:8080/api/pets/dog`, {
-			method: 'DELETE',
-			headers: {
-				'content/type': 'application/json'
-			}
-		})
-			.then(res => res.ok ? Promise.resolve('Dog successfully adopted') : Promise.reject('Cannot complete adoption at this time'))
-			.then(dog => JSON.stringify(dog))
-			.then(this.getPets)
-			.catch(err => console.log(err))
+		PetApiService.dequeuePet('dog')
+			.then(PetApiService.getPets)
 	};
 	
 	adoptCat = () => {
-		fetch(`http://localhost:8080/api/pets/cat`, {
-			method: 'DELETE',
-			headers: {
-				'content/type': 'application/json'
-			}
-		})
-			.then(res => res.ok ? Promise.resolve('Dog successfully adopted') : Promise.reject('Cannot complete adoption at this time'))
-			.then(cat => JSON.stringify(cat))
-			.then(this.getPets)
-			.catch(err => console.log(err))
+		PetApiService.dequeuePet('cat')
+			.then(PetApiService.getPets)
 		
 		
 	};
@@ -71,19 +49,20 @@ export class PetProvider extends React.Component {
 	
 	render() {
 		const value = {
+	
 			dog: this.state.dog,
 			cat: this.state.cat,
 			error: this.state.error,
-			getPets: this.getPets,
+	
 			adoptDog: this.adoptDog,
 			adoptCat: this.adoptCat,
 			setError: this.setError,
-			clearError: this.clearError()
+			clearError: this.clearError
 			
 		};
 		return (
 			<PetContext.Provider value={value} >
-				{this.props.children}
+				{this.props.children}xs
 			</PetContext.Provider>
 		);
 	}

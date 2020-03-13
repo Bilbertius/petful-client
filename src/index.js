@@ -1,14 +1,15 @@
-import './index.css'
+import './index.css';
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './Components/App/App'
-import {BrowserRouter} from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './Components/App/App';
+import {BrowserRouter} from 'react-router-dom';
 import {PetProvider} from './Context/PetContext';
+
 
 ReactDOM.render(
 	<BrowserRouter>
-			<PetProvider>
+		<PetProvider >
 				<App />
-			</PetProvider>
+		</PetProvider>
 	</BrowserRouter>, document.getElementById('root'));
