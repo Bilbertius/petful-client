@@ -2,26 +2,32 @@ import React, {Component} from 'react'
 import Header from '../Header/Header'
 import Home from '../Home/Home'
 import Pets from '../Pets/Pets'
-import {Route,Switch } from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
 class  App extends Component {
  render(){
-  return( 
-  <div className="App">
-  <Header/>
- <Home />
-  <Switch>
-  
-<Route
-path="/pets"
-component={Pets}
-/>
+  return(
 
+       <div className="App">
+           <Router>
+         <Header/>
+        <Home />
+          
+          <Switch>
+              <Route path='/'>
+                <Home />
+              </Route>
+              <Route path="/pets">
+                  <Pets />
+              </Route>
+           
 
-</Switch>
-
-</div>)
+        </Switch>
+           </Router>
+       </div>
+    
+       )
  }
  
 }
