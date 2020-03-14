@@ -6,7 +6,7 @@ import config from '../config.js';
 			method : 'GET',
 			headers : {
 				'content-type': 'application/json',
-				'mode' : 'cors'
+				'mode' : 'no-cors'
 			}
 		})
 			.then(res => !res.ok ? res.json().then(err => Promise.reject(err.statusText)) : res.json())
@@ -17,7 +17,7 @@ import config from '../config.js';
 			method : 'DELETE',
 			headers : {
 				'content-type': 'application/json',
-				'mode' : 'cors'
+				'mode' : 'no-cors'
 			}
 		})
 			.then(res => res.ok ? Promise.resolve('Adoption successful') : Promise.reject('Cannot complete adoption at this time'))

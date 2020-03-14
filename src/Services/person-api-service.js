@@ -6,7 +6,7 @@ const PersonApiService = {
 			method : 'GET',
 			headers : {
 				'content-type': 'application/json',
-				'mode' : 'cors'
+				'mode' : 'no-cors'
 			}
 		})
 			.then(res => !res.ok ? res.json().then(err => Promise.reject(err.statusText)) : res.json())
@@ -17,7 +17,7 @@ const PersonApiService = {
 			method : 'POST',
 			headers : {
 				'content-type': 'application/json',
-				'mode': 'cors'
+				'mode': 'no-cors'
 			},
 			body: JSON.stringify(person)
 		})
