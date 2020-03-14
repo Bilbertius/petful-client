@@ -26,6 +26,21 @@ const PersonApiService = {
 				Promise.reject('Cannot add to the queue at the moment'))
 			
 			.catch(err => console.log(err))
+	},
+	getPerson() {
+		return fetch(`${config.API_BASE_URL}/people`, {
+			method : 'PATCH',
+			headers : {
+				'content-type': 'application/json',
+				'mode': 'no-cors'
+			},
+			
+		})
+			.then(res => res.ok ?
+				Promise.resolve('Succesfully removed from the queue') :
+				Promise.reject('Cannot remove from queue at the moment'))
+			
+			.catch(err => console.log(err))
 	}
 };
 

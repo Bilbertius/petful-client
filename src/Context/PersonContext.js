@@ -23,10 +23,14 @@ export class PersonProvider extends React.Component {
 	
 	componentDidMount() {
 		PersonApiService.getPeople()
-			.then(people => this.setState({peopleLine: [...people], person: this.state.peopleLine[0]}));
+			.then(people => this.setState({peopleLine: people, person: this.firstInLine}));
 	};
 	
-
+	firstInLine = () => {
+		PersonApiService.getPerson()
+			.then(person => this.setState({person: person}))
+	}
+	
 	getInLine = (newPerson) => {
 		PersonApiService.enqueuePerson(newPerson)
 			.then(PersonApiService.getPeople)
@@ -47,6 +51,7 @@ export class PersonProvider extends React.Component {
 			
 			peopleLine: this.state.peopleLine,
 			person: this.state.person,
+			firstInLine: this.firstInLine,
 			getInLine: this.getInLine,
 			setError: this.setError,
 			clearError: this.clearError
