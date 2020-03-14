@@ -1,7 +1,7 @@
 import config from '../config.js';
 
  const PetApiService = {
-	getPets() {debugger
+	getPets() {
 		return fetch(`${config.API_BASE_URL}/pets`, {
 			method : 'GET',
 			headers : {

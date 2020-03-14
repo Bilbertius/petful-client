@@ -2,19 +2,10 @@ import React ,{Component } from 'react'
 import SearchPets from '../../images/searchpets.png'
 
 import {Link} from 'react-router-dom';
-import PersonContext from '../../Context/PersonContext';
+
 
 class Home extends Component{
-    static contextType = PersonContext;
-    state ={
-        user: this.context.person
-    }
-    
-    setUser(e) {
-        e.preventDefault();
-        const  user  = e.target['person-name'].value;
-        this.setState({user : user})
-    }
+
 
     render(){
 
