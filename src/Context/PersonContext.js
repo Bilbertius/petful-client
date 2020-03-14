@@ -1,5 +1,5 @@
 import React from 'react';
-import PersonApiService from '../Services/pet-api-service';
+import PersonApiService from '../Services/person-api-service';
 
 const PersonContext = React.createContext({
 	
@@ -22,7 +22,7 @@ export class PersonProvider extends React.Component {
 	}
 	
 	componentDidMount() {
-		PersonApiService.getPersons()
+		PersonApiService.getPeople()
 			.then(people => this.setState({peopleLine: [...people], person: this.state.peopleLine[0]}));
 	};
 	
