@@ -40,6 +40,10 @@ section > h2 {
     width: 100vw;
 }
 
+input {
+    padding: 1vh 1vh;
+}
+
 .pet {
     display: flex;
     flex-flow: column nowrap;
